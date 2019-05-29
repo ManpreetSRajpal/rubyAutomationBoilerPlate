@@ -1,43 +1,8 @@
-# MyBoilerPlate
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/myBoilerPlate`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'myBoilerPlate'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install myBoilerPlate
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/myBoilerPlate. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the MyBoilerPlate project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/myBoilerPlate/blob/master/CODE_OF_CONDUCT.md).
+### Getting Started
+      1. I have commited the chrome driver ver. 4.0.3729.6/chromedriver_mac64.zip 
+         and gecko driver ver geckodriver-v0.24.0-macos with this code.
+         If you are using browsers which are not compatible with these drivers version, 
+         download the compatible driver version and keep it under drivers/ dir. 
+      2. Run 'bundle install'
+      3. Run 'bundle exec cucumber @smoke'
+      4. or You can also run rake smoke to run smoke tests

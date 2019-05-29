@@ -1,4 +1,14 @@
-source "https://rubygems.org"
+source 'http://rubygems.org'
+ruby '2.6.3'
 
-# Specify your gem's dependencies in myBoilerPlate.gemspec
-gemspec
+gem 'cucumber'
+gem 'page-object'
+gem 'require_all'
+gem 'selenium-webdriver'
+gem 'pry'
+gem 'fig_newton'
+gem 'data_magic'
+gem 'rest-client'
+gem 'report_builder'
+gem 'object_mapper'
+gem 'dotenv'

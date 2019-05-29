@@ -6,6 +6,11 @@
 /pkg/
 /spec/reports/
 /tmp/
+/test_artifacts/
+/.Gemfile.lock/
+/.idea/*
+Gemfile.lock
+/.idea/workspace.xml
 
-# rspec failure tracking
-.rspec_status
+
+

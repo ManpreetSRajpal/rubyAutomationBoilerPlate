@@ -1,6 +1,15 @@
 require 'selenium-webdriver'
 require 'yaml'
-require_relative 'TestConfig'
+require 'psych'
+require_relative './TestConfig'
+
+
+class Test
+
+  def initialize(name)
+    @name = name
+  end
+end
 
 class TestConfiguration
 
@@ -14,7 +23,7 @@ class TestConfiguration
     @default_browser = 'chrome'
 
     cwd = File.dirname(__dir__)
-    config_file = File.join(cwd, '../config/config.yml')
+    config_file = File.join(cwd, '/config/config.yml')
     list_of_config = YAML.load_file(config_file)
     list_of_config
         .select {|list| list['envName'] == environment}
@@ -43,6 +52,3 @@ class TestConfiguration
   end
 
 end
-
-
-

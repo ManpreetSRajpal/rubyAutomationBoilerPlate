@@ -1,11 +1,7 @@
-
 Feature: Google Search
   The Google homepage allows user to perform a search.
 
-  @reg
+  @smoke
   Scenario: Users can perform a search on Google
     Given I open the Google search page
-
-  Scenario: Users can perform a search on Google
-    Given I open the Google search page
-
+    When I search for "<search>"

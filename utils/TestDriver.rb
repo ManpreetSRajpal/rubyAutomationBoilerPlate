@@ -1,5 +1,5 @@
 require 'selenium-webdriver'
-require_relative '../features/support/TestConfiguration'
+require_relative './TestConfiguration'
 
 class TestDriver
 
@@ -17,18 +17,26 @@ class TestDriver
   end
 
   def get_driver(browser)
+    cwd = File.dirname(__dir__)
     case browser
     when 'firefox'
+      browser_path = File.join(cwd, '/drivers/geckodriver')
+      Selenium::WebDriver::Firefox::Service.driver_path = browser_path
       @driver = Selenium::WebDriver.for :firefox
     when 'chrome'
+      browser_path = File.join(cwd, '/drivers/chromedriver')
+      Selenium::WebDriver::Chrome::Service.driver_path = browser_path
       @driver = Selenium::WebDriver.for :chrome
     end
     @driver
   end
 
   def self.get_instance
-    @test_driver = TestDriver.new
+    if @test_driver == nil
+      @test_driver = TestDriver.new
+    end
     @test_driver
+
   end
 
   def set_time_out(page_time_out)
@@ -37,6 +45,11 @@ class TestDriver
 
   def click(locator)
     @driver.find_element(locator).click
+  end
+
+  def set_text(locator, input_text)
+    @driver.find_element(locator).clear
+    @driver.find_element(locator).send_keys(input_text)
   end
 
   def clear_cookies
@@ -49,10 +62,18 @@ class TestDriver
 
   def quit
     @driver.quit
+    @driver = nil?
+    @test_driver = nil?
   end
 
   def get(url)
     @driver.navigate.to(url)
+  end
+
+  def takeScreenShot(path)
+    puts 'In screen shot '
+    @driver.save_screenshot(path)
+    puts 'After screen shot '
   end
 
 end
