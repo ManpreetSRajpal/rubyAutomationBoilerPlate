@@ -4,7 +4,6 @@ class BasePage
 
   def initialize
     @test_driver = TestDriver.get_instance
-    puts @test_driver
     @log = setup_logger('BasePage.class')
   end
 
@@ -19,7 +18,6 @@ class BasePage
   end
 
   def get(url)
-    @log.debug('get url ' + url)
     @test_driver.get(url)
   end
 

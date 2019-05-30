@@ -1,8 +1,12 @@
-- envName: google
-  loginURL: https://www.google.com/
+default: &default
   pageTimeOut: 30
   objectTimeOut: 30
-- envName: facebook
-  loginURL: https://www.facebook.com/
-  pageTimeOut: 30
-  objectTimeOut: 30
+
+google:
+  <<: *default
+  login_url: https://www.google.com/
+
+facebook:
+  login_url: https://www.facebook.com/
+  page_timeout: 30
+  object_timeout: 30

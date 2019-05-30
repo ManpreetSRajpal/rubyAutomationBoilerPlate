@@ -52,11 +52,11 @@ Before do |scenario|
   @log.debug("Starting scenario: #{scenario.name}")
 
   default_env = 'facebook'
-  temp_env = 'facebook'
+  temp_env = 'google'
   environment = temp_env.nil? ? default_env : temp_env
-  TestConfiguration.load_configuration(environment)
+  @test_configuration = TestConfiguration.load_configuration(environment)
   @test_driver = TestDriver.get_instance
-  @test_driver.set_time_out(TestConfiguration.page_time_out)
+  @test_driver.set_timeout(@test_configuration.page_timeout)
   @test_driver.clear_cookies
   @test_driver.list_cookies
 end

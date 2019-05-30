@@ -8,9 +8,6 @@
 /tmp/
 /test_artifacts/
 /.Gemfile.lock/
-/.idea/*
+.idea/*
 Gemfile.lock
-/.idea/workspace.xml
-
-
-
+workspace.xml

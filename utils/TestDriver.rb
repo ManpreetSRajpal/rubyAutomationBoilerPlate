@@ -39,8 +39,8 @@ class TestDriver
 
   end
 
-  def set_time_out(page_time_out)
-    @wait_time_for_page_to_load = page_time_out
+  def set_timeout(page_timeout)
+    @wait_time_for_page_to_load = page_timeout
   end
 
   def click(locator)
@@ -71,9 +71,7 @@ class TestDriver
   end
 
   def takeScreenShot(path)
-    puts 'In screen shot '
     @driver.save_screenshot(path)
-    puts 'After screen shot '
   end
 
 end
