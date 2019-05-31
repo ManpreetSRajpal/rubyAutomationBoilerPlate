@@ -11,3 +11,4 @@
 .idea/*
 Gemfile.lock
 workspace.xml
+*.iml
