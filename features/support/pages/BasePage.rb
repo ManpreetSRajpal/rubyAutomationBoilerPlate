@@ -8,12 +8,12 @@ class BasePage
   end
 
   def click(locator)
-    @log.debug('clicking on ' + locator)
+    @log.debug('Clicking on the element ' + locator.to_s)
     @test_driver.click(locator)
   end
 
   def setText(locator, str)
-    @log.debug('set text ' + str)
+    @log.debug('Setting text %s at element %s' % [str, locator.to_s])
     @test_driver.set_text(locator, str)
   end
 
