@@ -70,6 +70,20 @@ class TestDriver
     @driver.navigate.to(url)
   end
 
+  def find_element(how, what)
+    @driver.find_element(how, what)
+  end
+
+  def wait_for_element_to_disappear(how, what, timeout)
+    wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+    wait.until { !@driver.find_element(how, what).size == 0 }
+  end
+
+  def wait_for_element_to_be_visible(how, what, timeout)
+    wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+    wait.until { @driver.find_elements(how, what).size > 0 }
+  end
+
   def takeScreenShot(path)
     @driver.save_screenshot(path)
   end
