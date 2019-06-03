@@ -52,7 +52,7 @@ Before do |scenario|
   @log.debug("Starting scenario: #{scenario.name}")
 
   default_env = 'facebook'
-  temp_env = 'google'
+  temp_env = 'okta'
   environment = temp_env.nil? ? default_env : temp_env
   @test_configuration = TestConfiguration.load_configuration(environment)
   @test_driver = TestDriver.get_instance
