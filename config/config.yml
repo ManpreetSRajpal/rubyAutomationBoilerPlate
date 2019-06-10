@@ -5,22 +5,3 @@ default: &default
 
 local:
   << : *default
-  users:
-    guest:
-      user_name: qa_guest@thoughtworks.com
-      password: !NA8ZR$H13@r
-    read_only:
-      user_name: qa_read_only@thoughtworks.com
-      password: Cl6oq1&*e^P7
-    account_head:
-      user_name: qa_account_head@thoughtworks.com
-      password: m3EfBG1h7i&t
-    region_head:
-      user_name: qa_region_head@thoughtworks.com
-      password: 2y9Sdk4VC$!M
-    location_head:
-      user_name: qa_location_head@thoughtworks.com
-      password: aMotN0w1A44*
-    admin:
-      user_name: qa_admin@thoughtworks.com
-      password: lH5M2$!lzO#H

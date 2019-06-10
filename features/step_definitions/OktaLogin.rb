@@ -7,9 +7,8 @@ Given /^I open the Okta login page$/ do
   @login.goto_login_page okta_login_url
 end
 
-When /^I enter username "(.*?)" and password "(.*?)"$/ do |username, password|
-  @login.enter_username username
-  @login.enter_password password
+When("I log in to Okta as a {string} user") do |role|
+  @login.login_as role
   @login.click_sign_in_btn
 end
 Then /^I should see the Home text on the homepage$/ do
