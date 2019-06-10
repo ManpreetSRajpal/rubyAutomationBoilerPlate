@@ -46,4 +46,9 @@ class BasePage
     wait.until { @test_driver.driver.find_elements(how, what).size > 0 }
   end
 
+  def hover_on_element(locator)  # does not work
+    how, what = locator.first
+    @test_driver.driver.action.move_to(driver.find_element(how, what)).perform
+  end
+
 end

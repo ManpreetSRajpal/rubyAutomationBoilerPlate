@@ -12,7 +12,15 @@ When("I log in to Go Secure as a {string} user") do |role|
   @login.click_sign_in_btn
 end
 Then /^I should see the ThoughtWorks footer text on the homepage$/ do
-  @home_page.wait_for_go_secure_logo_to_be_visible
   @home_page.wait_for_tw_footer_to_be_visible
   @home_page.click_on_users_btn
+end
+
+When(/^I click on the Logout button$/) do
+  @home_page.click_on_profile_icon
+  @home_page.click_on_logout_btn
+end
+
+Then(/^I should be logged out of Go Secure$/) do
+  @login.is_sign_in_btn_visible
 end

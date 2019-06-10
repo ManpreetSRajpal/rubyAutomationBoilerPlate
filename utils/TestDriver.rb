@@ -46,14 +46,6 @@ class TestDriver
     @wait_time_for_page_to_load = page_timeout
   end
 
-  def clear_cookies
-    @driver.manage.delete_all_cookies
-  end
-
-  def list_cookies
-    @driver.manage.all_cookies
-  end
-
   def quit
     @driver.quit
     @driver = nil?

@@ -57,8 +57,6 @@ Before do |scenario|
   @test_configuration = TestConfiguration.load_configuration(environment)
   @test_driver = TestDriver.get_instance
   @test_driver.set_timeout(@test_configuration.page_timeout)
-  @test_driver.clear_cookies
-  @test_driver.list_cookies
 end
 
 After do |scenario|
@@ -71,6 +69,7 @@ After do |scenario|
       embed screenshot, 'image/png'
     end
   ensure
+    @log.debug("Something went wrong while capturing the screenshot.")
     @test_driver.quit
   end
 end
