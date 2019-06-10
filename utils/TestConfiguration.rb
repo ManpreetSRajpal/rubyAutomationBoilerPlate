@@ -5,6 +5,7 @@ class TestConfiguration
 
 
   attr_reader :okta_login_url
+  attr_reader :go_secure_login_url
   attr_reader :page_timeout
   attr_reader :object_timeout
   attr_reader :browser
@@ -16,6 +17,7 @@ class TestConfiguration
     config_file = File.join(cwd, '/config/config.yml')
     config = YAML.load_file(config_file)[environment]
     @okta_login_url = config['okta_login_url']
+    @go_secure_login_url = config['go_secure_login_url']
     @page_timeout = config['page_timeout']
     @object_timeout = config['object_timeout']
   end
