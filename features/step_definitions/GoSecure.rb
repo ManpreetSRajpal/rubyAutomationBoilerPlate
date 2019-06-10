@@ -2,7 +2,7 @@ Given /^I open the Go Secure login page$/ do
 
   okta_login_url = @test_configuration.go_secure_login_url
 
-  @login = GoSecureLoginPage.new
+  @login = OktaLoginPage.new
   @home_page = GoSecureHomePage.new
   @login.goto_login_page okta_login_url
 end
