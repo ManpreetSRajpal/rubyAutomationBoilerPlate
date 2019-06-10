@@ -13,7 +13,6 @@ When("I log in to Go Secure as a {string} user") do |role|
 end
 Then /^I should see the ThoughtWorks footer text on the homepage$/ do
   @home_page.wait_for_go_secure_logo_to_be_visible
-  @home_page.is_go_secure_logo_seen
   @home_page.wait_for_tw_footer_to_be_visible
   @home_page.click_on_users_btn
 end
