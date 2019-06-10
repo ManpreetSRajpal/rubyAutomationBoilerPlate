@@ -30,6 +30,7 @@ class TestDriver
       Selenium::WebDriver::Chrome::Service.driver_path = browser_path
       @driver = Selenium::WebDriver.for :chrome
     end
+    @driver.manage.window.maximize
     @driver
   end
 
