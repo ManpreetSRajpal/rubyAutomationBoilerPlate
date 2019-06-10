@@ -1,9 +1,10 @@
 default: &default
-  pageTimeOut: 30
-  objectTimeOut: 30
+  page_timeout: 30
+  object_timeout: 30
+  okta_login_url: https://dev-130599.oktapreview.com/login/login.htm
 
-okta:
-  login_url: https://dev-130599.oktapreview.com/login/login.htm
+local:
+  << : *default
   users:
     guest:
       user_name: qa_guest@thoughtworks.com
@@ -23,12 +24,3 @@ okta:
     admin:
       user_name: qa_admin@thoughtworks.com
       password: lH5M2$!lzO#H
-
-google:
-  <<: *default
-  login_url: https://www.google.com/
-
-facebook:
-  login_url: https://www.facebook.com/
-  page_timeout: 30
-  object_timeout: 30

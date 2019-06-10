@@ -1,6 +1,6 @@
 Given /^I open the Okta login page$/ do
 
-  okta_login_url = @test_configuration.login_url
+  okta_login_url = @test_configuration.okta_login_url
 
   @login = OktaLoginPage.new
   @home_page = OktaHomePage.new

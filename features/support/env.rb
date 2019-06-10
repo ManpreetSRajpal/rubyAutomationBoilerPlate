@@ -51,8 +51,8 @@ Before do |scenario|
   @log = setup_logger(scenario.name.to_s)
   @log.debug("Starting scenario: #{scenario.name}")
 
-  default_env = 'facebook'
-  temp_env = 'okta'
+  default_env = 'default'
+  temp_env = 'local'
   environment = temp_env.nil? ? default_env : temp_env
   @test_configuration = TestConfiguration.load_configuration(environment)
   @test_driver = TestDriver.get_instance
@@ -67,7 +67,7 @@ After do |scenario|
     if scenario.failed?
       @log.error("#{scenario.name} FAILED! => Logging screenshot in #{$VALUE}/test_screenshots")
       screenshot = "#{$VALUE}/test_screenshots/FAILED_#{scenario.name}_#{Time.new.localtime.strftime('%F %H.%M.%S%L')}.png"
-      @test_driver.takeScreenShot(screenshot)
+      @test_driver.take_screenshot(screenshot)
       embed screenshot, 'image/png'
     end
   ensure

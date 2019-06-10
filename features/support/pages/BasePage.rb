@@ -8,32 +8,42 @@ class BasePage
   end
 
   def click(locator)
-    @log.debug('Clicking on the element ' + locator.to_s)
-    @test_driver.click(locator)
+    how, what = locator.first
+    @log.debug('Clicking on the element ' + {how => what}.to_s)
+    @test_driver.driver.find_element(how, what).click
   end
 
-  def setText(locator, str)
-    @log.debug('Setting text %s at element %s' % [str, locator.to_s])
-    @test_driver.set_text(locator, str)
+  def set_text(locator, str)
+    how, what = locator.first
+    @log.debug('Setting text %s at element %s' % [str, {how => what}.to_s])
+    @test_driver.driver.find_element(how, what).send_keys(str)
   end
 
   def get(url)
-    @test_driver.get(url)
+    @test_driver.driver.get(url)
   end
 
-  def isElementDisplayed(how, locator)
+  def is_element_displayed(locator)
+    how, what = locator.first
     @log.debug('Checking if the element %s is displayed' % [locator.to_s])
-    @test_driver.find_element(how, locator).displayed? == true
+    @test_driver.driver.find_element(how, what).displayed?
   end
 
-  def waitForElementToDisappear(how, locator, timeout)
-    @log.debug('Waiting for the element %s to disappear' % [locator])
-    @test_driver.wait_for_element_to_disappear(how, locator, timeout)
+  def find_element(locator)
+    how, what = locator.first
+    @test_driver.driver.find_element(how, what)
   end
 
-  def waitForElementToBeVisible(how, locator, timeout)
-    @log.debug('Waiting for the element %s to be visible' % [locator])
-    @test_driver.wait_for_element_to_be_visible(how, locator, timeout)
+  def wait_for_element_to_disappear(locator, timeout)
+    how, what = locator.first
+    wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+    wait.until { !@test_driver.driver.find_element(how, what).size == 0 }
+  end
+
+  def wait_for_element_to_be_visible(locator, timeout)
+    how, what = locator.first
+    wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+    wait.until { @test_driver.driver.find_elements(how, what).size > 0 }
   end
 
 end

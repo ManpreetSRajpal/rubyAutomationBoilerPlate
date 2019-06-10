@@ -4,7 +4,7 @@ require 'yaml'
 class TestConfiguration
 
 
-  attr_reader :login_url
+  attr_reader :okta_login_url
   attr_reader :page_timeout
   attr_reader :object_timeout
   attr_reader :browser
@@ -15,7 +15,7 @@ class TestConfiguration
     cwd = File.dirname(__dir__)
     config_file = File.join(cwd, '/config/config.yml')
     config = YAML.load_file(config_file)[environment]
-    @login_url = config['login_url']
+    @okta_login_url = config['okta_login_url']
     @page_timeout = config['page_timeout']
     @object_timeout = config['object_timeout']
   end
