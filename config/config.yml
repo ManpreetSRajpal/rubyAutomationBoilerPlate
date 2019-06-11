@@ -1,6 +1,6 @@
 default: &default
   page_timeout: 30
-  object_timeout: 30
+  object_timeout: 10
   okta_login_url: https://dev-130599.oktapreview.com/login/login.htm
   go_secure_login_url: http://localhost:3001/
 

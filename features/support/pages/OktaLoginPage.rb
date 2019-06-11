@@ -5,7 +5,6 @@ class OktaLoginPage < BasePage
   USER_NAME_INPUT_BOX = {:id => 'okta-signin-username'}
   PASSWORD_INPUT_BOX = {:id => 'okta-signin-password'}
   SIGN_IN_BTN = {:id => 'okta-signin-submit'}
-  TIMEOUT = 10
   @log = setup_logger('OktaLoginPage.class')
 
   def goto_login_page(url)
@@ -30,7 +29,7 @@ class OktaLoginPage < BasePage
 
   def is_sign_in_btn_visible
     @log.debug("Checking if the Sign-in button is visible")
-    wait_for_element_to_be_visible(SIGN_IN_BTN, TIMEOUT)
+    wait_for_element_to_be_visible(SIGN_IN_BTN)
   end
 
 end

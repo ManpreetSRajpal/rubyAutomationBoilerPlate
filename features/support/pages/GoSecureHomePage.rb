@@ -4,12 +4,12 @@ class GoSecureHomePage < BasePage
   TW_FOOTER_TEXT_XPATH = {:xpath => "//p[contains(text(),'© ThoughtWorks, Inc. All Rights Reserved.')]"}
   PROFILE_ICON_XPATH = {:xpath => "//ul[@id='utility_nav']"}
   LOGOUT_BTN_XPATH = {:xpath => "//a[contains(text(),'Logout')]"}
-  TIMEOUT = 10
+
   @log = setup_logger('GoSecureHomePage.class')
 
   def wait_for_tw_footer_to_be_visible
     @log.debug('Waiting for the TW footer text to be visible')
-    wait_for_element_to_be_visible(TW_FOOTER_TEXT_XPATH, TIMEOUT)
+    wait_for_element_to_be_visible(TW_FOOTER_TEXT_XPATH)
   end
 
   def click_on_users_btn

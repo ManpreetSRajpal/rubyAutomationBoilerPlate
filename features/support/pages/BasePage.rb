@@ -2,9 +2,12 @@ require_relative '../../../utils/TestDriver'
 
 class BasePage
 
+  attr_accessor :obj_timeout
+
   def initialize
     @test_driver = TestDriver.get_instance
     @log = setup_logger('BasePage.class')
+    @obj_timeout = @test_driver.object_timeout
   end
 
   def click(locator)
@@ -40,19 +43,19 @@ class BasePage
     @test_driver.driver.find_element(how, what)
   end
 
-  def wait_for_element_to_disappear(locator, timeout)
+  def wait_for_element_to_disappear(locator)
     how, what = locator.first
-    wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+    wait = Selenium::WebDriver::Wait.new(timeout: @obj_timeout)
     wait.until { !@test_driver.driver.find_element(how, what).size == 0 }
   end
 
-  def wait_for_element_to_be_visible(locator, timeout)
+  def wait_for_element_to_be_visible(locator)
     how, what = locator.first
-    wait = Selenium::WebDriver::Wait.new(timeout: timeout)
+    wait = Selenium::WebDriver::Wait.new(timeout: @obj_timeout)
     wait.until { @test_driver.driver.find_elements(how, what).size > 0 }
   end
 
-  def hover_on_element(locator)  # does not work
+  def hover_on_element(locator) # does not work
     how, what = locator.first
     @test_driver.driver.action.move_to(driver.find_element(how, what)).perform
   end
