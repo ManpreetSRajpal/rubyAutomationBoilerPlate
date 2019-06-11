@@ -31,6 +31,7 @@ class TestDriver
       @driver = Selenium::WebDriver.for :chrome
     end
     @driver.manage.window.maximize
+    @driver.manage.timeouts.implicit_wait = 20  # TODO: take this from the configuration instead
     @driver
   end
 
@@ -40,10 +41,6 @@ class TestDriver
     end
     @test_driver
 
-  end
-
-  def set_timeout(page_timeout)
-    @wait_time_for_page_to_load = page_timeout
   end
 
   def quit
