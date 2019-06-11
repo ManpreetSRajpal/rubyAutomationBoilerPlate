@@ -29,7 +29,7 @@ class GoSecureHomePage < BasePage
 
   def click_on_logout_btn
     @log.debug("Clicking on the Logout btn")
-    click(LOGOUT_BTN_XPATH)
+    click_with_action(LOGOUT_BTN_XPATH)
   end
 
 end

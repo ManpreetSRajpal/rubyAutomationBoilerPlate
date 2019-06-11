@@ -4,6 +4,7 @@ Given /^I open the Go Secure login page$/ do
 
   @login = OktaLoginPage.new
   @home_page = GoSecureHomePage.new
+  @logged_out_page = GoSecureLoggedOutPage.new
   @login.goto_login_page okta_login_url
 end
 
@@ -22,5 +23,5 @@ When(/^I click on the Logout button$/) do
 end
 
 Then(/^I should be logged out of Go Secure$/) do
-  @login.is_sign_in_btn_visible
+  @logged_out_page.is_sign_out_message_visible
 end
