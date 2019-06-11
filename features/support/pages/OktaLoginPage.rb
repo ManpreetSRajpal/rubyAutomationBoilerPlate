@@ -1,4 +1,4 @@
-require_relative '../../../features/support/OktaCredentialsProvider'
+require_relative '../../../utils/OktaCredentialsProvider'
 
 class OktaLoginPage < BasePage
 

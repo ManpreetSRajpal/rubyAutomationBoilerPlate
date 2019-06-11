@@ -6,7 +6,7 @@ class OktaCredentialsProvider
 
   def initialize
     cwd = File.dirname(__dir__)
-    okta_credentials_file = File.join(cwd, '/support/constants/okta_credentials.yml')
+    okta_credentials_file = File.join(cwd, '/constants/okta_credentials.yml')
     @credentials = YAML.load_file(okta_credentials_file)
   end
 
