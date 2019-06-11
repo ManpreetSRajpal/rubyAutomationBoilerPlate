@@ -13,6 +13,12 @@ class BasePage
     @test_driver.driver.find_element(how, what).click
   end
 
+  def click_with_action(locator)
+    how, what = locator.first
+    @log.debug('Clicking on the element ' + {how => what}.to_s + ' with Actions class')
+    @test_driver.driver.action.click(@test_driver.driver.find_element(locator)).perform
+  end
+
   def set_text(locator, str)
     how, what = locator.first
     @log.debug('Setting text %s at element %s' % [str, {how => what}.to_s])
