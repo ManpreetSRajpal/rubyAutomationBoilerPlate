@@ -54,8 +54,10 @@ Before do |scenario|
   default_env = 'default'
   temp_env = 'local'
   environment = temp_env.nil? ? default_env : temp_env
-  @test_configuration = TestConfiguration.load_configuration(environment)
+  @test_configuration = TestConfiguration.load_configuration environment
   @test_driver = TestDriver.get_instance
+  @test_driver.page_timeout @test_configuration.page_timeout
+  @test_driver.object_timeout = @test_configuration.object_timeout
 end
 
 After do |scenario|

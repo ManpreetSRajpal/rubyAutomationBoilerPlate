@@ -1,9 +1,10 @@
-require 'selenium-webdriver'
+git require 'selenium-webdriver'
 require_relative './TestConfiguration'
 
 class TestDriver
 
   attr_reader :driver
+  attr_accessor :object_timeout
 
   def initialize
     @driver = create_driver
@@ -25,13 +26,13 @@ class TestDriver
       browser_path = File.join(cwd, '/drivers/geckodriver')
       Selenium::WebDriver::Firefox::Service.driver_path = browser_path
       @driver = Selenium::WebDriver.for :firefox
-    else 'chrome'
+    else
+      'chrome'
       browser_path = File.join(cwd, '/drivers/chromedriver')
       Selenium::WebDriver::Chrome::Service.driver_path = browser_path
       @driver = Selenium::WebDriver.for :chrome
     end
     @driver.manage.window.maximize
-    @driver.manage.timeouts.implicit_wait = 20  # TODO: take this from the configuration instead
     @driver
   end
 
@@ -41,6 +42,10 @@ class TestDriver
     end
     @test_driver
 
+  end
+
+  def page_timeout(timeout)
+    @driver.manage.timeouts.implicit_wait = timeout
   end
 
   def quit
