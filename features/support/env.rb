@@ -56,7 +56,6 @@ Before do |scenario|
   environment = temp_env.nil? ? default_env : temp_env
   @test_configuration = TestConfiguration.load_configuration(environment)
   @test_driver = TestDriver.get_instance
-  @test_driver.set_timeout(@test_configuration.page_timeout)
 end
 
 After do |scenario|
@@ -70,7 +69,6 @@ After do |scenario|
     end
   ensure
     @log.debug("Something went wrong while capturing the screenshot.")
-    @test_driver.quit
   end
 end
 
@@ -84,4 +82,5 @@ at_exit do
       include_images: true
   }
   ReportBuilder.build_report options
+  @test_driver.quit
 end
