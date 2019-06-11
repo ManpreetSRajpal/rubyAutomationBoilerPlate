@@ -2,6 +2,7 @@ require 'selenium-webdriver'
 require 'cucumber'
 require 'report_builder'
 require 'fileutils'
+require 'pg'
 
 $target_folder = 'test_artifacts'
 
@@ -37,6 +38,15 @@ def setup_logger(log_name)
   logger
 end
 
+def clear_assessments
+  puts 'Clearing the assessments'
+  conn = PG.connect(dbname: 'go_secure_development')
+  conn.exec('delete from scores')
+  conn.exec('delete from answers')
+  conn.exec('delete from assessments')
+end
+
+clear_assessments
 
 ReportBuilder.configure do |config|
   config.json_path = "#{$VALUE}/test_results}"

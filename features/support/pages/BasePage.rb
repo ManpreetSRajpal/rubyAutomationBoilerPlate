@@ -16,6 +16,11 @@ class BasePage
     @test_driver.driver.find_element(how, what).click
   end
 
+  def execute_script(script, locator)
+    how, what = locator.first
+    @test_driver.driver.execute_script(script, @test_driver.driver.find_element(how, what))
+  end
+
   def click_with_action(locator)
     how, what = locator.first
     @log.debug('Clicking on the element ' + {how => what}.to_s + ' with Actions class')
@@ -55,7 +60,7 @@ class BasePage
     wait.until { @test_driver.driver.find_elements(how, what).size > 0 }
   end
 
-  def hover_on_element(locator) # does not work
+  def hover_on_element(locator) # TODO: does not work, fix this
     how, what = locator.first
     @test_driver.driver.action.move_to(driver.find_element(how, what)).perform
   end

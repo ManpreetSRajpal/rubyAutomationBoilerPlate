@@ -6,6 +6,7 @@ Given /^I open the Go Secure login page$/ do
   @home_page = GoSecureHomePage.new
   @logged_out_page = GoSecureLoggedOutPage.new
   @users_page = GoSecureUsersPage.new
+  @assessments_page = GoSecureAssessmemtsPage.new
   @login.goto_login_page okta_login_url
 end
 
@@ -30,4 +31,26 @@ When(/^I click on the Logout button$/) do
 end
 Then(/^I should be logged out of Go Secure$/) do
   @logged_out_page.is_sign_out_message_visible
+end
+
+Then(/^I should see the Welcome text on the homepage$/) do
+  @home_page.is_welcome_text_visible
+end
+
+When(/^I click on the START button$/) do
+  @home_page.click_start_assessments_btn
+end
+
+Then(/^I should see the SAVE\/SUBMIT buttons$/) do
+  @assessments_page.is_save_btn_visible
+  @assessments_page.is_submit_btn_visible
+end
+
+Then(/^I should be able to submit answers for all the questions$/) do
+  @assessments_page.answer_first_question
+  @assessments_page.answer_second_question
+  @assessments_page.answer_third_question
+  @assessments_page.click_next_btn
+  @assessments_page.answer_forth_question
+  @assessments_page.click_next_btn
 end
