@@ -66,3 +66,7 @@ end
 Then(/^I should be able to see the submitted assessments$/) do
   @home_page.is_response_tile_visible
 end
+
+When(/^I click on the submitted assessment$/) do
+  @home_page.click_submitted_response_btn
+end

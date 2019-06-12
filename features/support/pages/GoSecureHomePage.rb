@@ -32,4 +32,9 @@ class GoSecureHomePage < BasePage
     wait_for_element_to_be_visible(RESPONDED_TILE_XPATH)
   end
 
+  def click_submitted_response_btn
+    @log.debug("Clicking on the submitted responses button")
+    click(RESPONDED_TILE_XPATH)
+  end
+
 end

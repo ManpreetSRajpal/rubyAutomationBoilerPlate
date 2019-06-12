@@ -15,3 +15,7 @@ Feature: Go Secure Guest User
     Given I navigate to the home page
     When I click on the Previous tab
     Then I should be able to see the submitted assessments
+
+    Given I click on the Previous tab
+    When I click on the submitted assessment
+    Then I should be able to see the reports page
