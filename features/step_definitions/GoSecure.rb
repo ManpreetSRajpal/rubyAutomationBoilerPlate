@@ -7,6 +7,7 @@ Given /^I open the Go Secure login page$/ do
   @logged_out_page = GoSecureLoggedOutPage.new
   @users_page = GoSecureUsersPage.new
   @assessments_page = GoSecureAssessmemtsPage.new
+  @reports_page = GoSecureReportsPage.new
   @login.goto_login_page okta_login_url
 end
 
@@ -47,10 +48,21 @@ Then(/^I should see the SAVE\/SUBMIT buttons$/) do
 end
 
 Then(/^I should be able to submit answers for all the questions$/) do
-  @assessments_page.answer_first_question
-  @assessments_page.answer_second_question
-  @assessments_page.answer_third_question
-  @assessments_page.click_next_btn
-  @assessments_page.answer_forth_question
-  @assessments_page.click_next_btn
+  @assessments_page.answer_all_questions
+end
+
+Then(/^I should be able to see the reports page$/) do
+  @reports_page.is_print_icon_visible
+end
+
+Given(/^I navigate to the home page$/) do
+  @assessments_page.click_go_secure_logo
+end
+
+When(/^I click on the Previous tab$/) do
+  @home_page.click_previous_tab
+end
+
+Then(/^I should be able to see the submitted assessments$/) do
+  @home_page.is_response_tile_visible
 end

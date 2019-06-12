@@ -10,3 +10,8 @@ Feature: Go Secure Guest User
     When I click on the START button
     Then I should see the SAVE/SUBMIT buttons
     Then I should be able to submit answers for all the questions
+    Then I should be able to see the reports page
+
+    Given I navigate to the home page
+    When I click on the Previous tab
+    Then I should be able to see the submitted assessments
