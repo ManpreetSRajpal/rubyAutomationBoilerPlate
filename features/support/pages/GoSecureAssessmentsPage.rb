@@ -57,7 +57,6 @@ class GoSecureAssessmemtsPage < BasePage
       click_save_btn
     end
     if click_next
-      puts "Clicking NEXT"
       click_next_btn
     end
   end
@@ -69,17 +68,17 @@ class GoSecureAssessmemtsPage < BasePage
   def answer_all_questions
     ALL_ANSWERS.each do |question_answer|
       question_number, answer_attributes = question_answer.first
-      puts "Question number: " + question_number.to_s
+      @log.debug("Question number: " + question_number.to_s)
       question_title = answer_attributes[0]
-      puts "Question: " + question_title
+      @log.debug("Question: " + question_title)
       answer_title = answer_attributes[1]
-      puts "Answer: " + answer_title
+      @log.debug("Answer: " + answer_title)
       click_save_after_answering = answer_attributes[2]
-      puts "click_save_after_answering: " + click_save_after_answering.to_s
+      @log.debug("click_save_after_answering: " + click_save_after_answering.to_s)
       click_next_after_answering = answer_attributes[3]
-      puts "click_next_after_answering: " + click_next_after_answering.to_s
+      @log.debug("click_next_after_answering: " + click_next_after_answering.to_s)
       answer_option_xpath = generate_answer_xpath(question_title, answer_title)
-      puts "Answer option XPath : " + answer_option_xpath.to_s
+      @log.debug("Answer option XPath : " + answer_option_xpath.to_s)
       answer_question(answer_option_xpath, question_number, click_save_after_answering, click_next_after_answering)
     end
     click_submit_btn
@@ -90,7 +89,7 @@ class GoSecureAssessmemtsPage < BasePage
     while is_submit_btn_disabled
       all_visible_question_title_xpaths = find_all_elements(QUESTIONS_TITLE_XPATH)
       last_question_title_text = all_visible_question_title_xpaths[-1].text
-      puts "Question: " + last_question_title_text
+      @log.debug("Question: " + last_question_title_text)
       last_question_answer_attributes = []
       ALL_ANSWERS.each do |question_answer|
         question_number, answer_attributes = question_answer.first
@@ -101,16 +100,16 @@ class GoSecureAssessmemtsPage < BasePage
         end
       end
       answer_text = last_question_answer_attributes[1]
-      puts "Answer: " + answer_text
+      @log.debug("Answer: " + answer_text)
       save_after_answering = last_question_answer_attributes[2]
-      puts "save_after_answering: " + save_after_answering.to_s
+      @log.debug("save_after_answering: " + save_after_answering.to_s)
       next_after_answering = last_question_answer_attributes[3]
-      puts "next_after_answering: " + next_after_answering.to_s
+      @log.debug("next_after_answering: " + next_after_answering.to_s)
       answer_xpath = generate_answer_xpath(last_question_title_text, answer_text)
-      puts "Answer XPath: " + answer_xpath.to_s
+      @log.debug("Answer XPath: " + answer_xpath.to_s)
       answer_question(answer_xpath, 0, save_after_answering, next_after_answering)
       is_submit_btn_disabled = !is_element_enabled(SUBMIT_BTN_XPATH)
-      puts "is_submit_btn_disabled: " + is_submit_btn_disabled.to_s
+      @log.debug("is_submit_btn_disabled: " + is_submit_btn_disabled.to_s)
     end
     click_submit_btn
   end
