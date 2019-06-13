@@ -27,12 +27,12 @@ class GoSecureAssessmemtsPage < BasePage
 
   def is_save_btn_visible
     @log.debug("Checking if the SAVE button is visible")
-    wait_for_element_to_be_visible(SAVE_BTN_XPATH)
+    is_element_displayed(SAVE_BTN_XPATH)
   end
 
   def is_submit_btn_visible
     @log.debug("Checking if the SUBMIT button is visible")
-    wait_for_element_to_be_visible(SUBMIT_BTN_XPATH)
+    is_element_displayed(SUBMIT_BTN_XPATH)
   end
 
   def click_save_btn

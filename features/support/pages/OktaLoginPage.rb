@@ -7,6 +7,11 @@ class OktaLoginPage < BasePage
   SIGN_IN_BTN = {:id => 'okta-signin-submit'}
   @log = setup_logger('OktaLoginPage.class')
 
+  def delete_cookies
+    @log.debug("Clearing cookies")
+    clear_all_cookies
+  end
+
   def goto_login_page(url)
     get(url)
   end

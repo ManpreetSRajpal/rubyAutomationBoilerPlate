@@ -29,7 +29,7 @@ class GoSecureHomePage < BasePage
 
   def is_response_tile_visible
     @log.debug("Waiting for the response tile to be visible")
-    wait_for_element_to_be_visible(RESPONDED_TILE_XPATH)
+    is_element_displayed(RESPONDED_TILE_XPATH)
   end
 
   def click_submitted_response_btn

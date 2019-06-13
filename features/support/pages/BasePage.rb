@@ -11,7 +11,7 @@ class BasePage
 
   def is_welcome_text_visible
     @log.debug('Checking if the welcome text is visible')
-    wait_for_element_to_be_visible(WELCOME_TEXT_XPATH)
+    is_element_displayed(WELCOME_TEXT_XPATH)
   end
 
   def hover_on_profile_icon
@@ -74,7 +74,8 @@ class BasePage
   def is_element_displayed(locator)
     how, what = locator.first
     @log.debug('Checking if the element %s is displayed' % [locator.to_s])
-    @test_driver.driver.find_element(how, what).displayed?
+    wait = Selenium::WebDriver::Wait.new(timeout: @obj_timeout)
+    wait.until {@test_driver.driver.find_element(how, what).displayed?}
   end
 
   def is_element_enabled(locator)

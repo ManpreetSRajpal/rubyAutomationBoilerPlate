@@ -5,7 +5,7 @@ class GoSecureLoggedOutPage < BasePage
 
   def is_sign_out_message_visible
     @log.debug("Checking if the successful logout message has appeared")
-    wait_for_element_to_be_visible(LOGOUT_MSG_XPATH)
+    is_element_displayed(LOGOUT_MSG_XPATH)
   end
 
 end
