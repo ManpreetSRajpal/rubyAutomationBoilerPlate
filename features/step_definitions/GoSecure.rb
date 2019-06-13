@@ -48,7 +48,8 @@ Then(/^I should see the SAVE\/SUBMIT buttons$/) do
 end
 
 Then(/^I should be able to submit answers for all the questions$/) do
-  @assessments_page.answer_all_questions
+  # @assessments_page.answer_all_questions
+  @assessments_page.answer_all_questions_independent_of_order
 end
 
 Then(/^I should be able to see the reports page$/) do

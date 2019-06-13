@@ -77,6 +77,12 @@ class BasePage
     @test_driver.driver.find_element(how, what).displayed?
   end
 
+  def is_element_enabled(locator)
+    how, what = locator.first
+    @log.debug('Checking if the element %s is enabled' % [locator.to_s])
+    @test_driver.driver.find_element(how, what).enabled?
+  end
+
   def find_element(locator)
     how, what = locator.first
     @test_driver.driver.find_element(how, what)
@@ -92,6 +98,11 @@ class BasePage
     how, what = locator.first
     wait = Selenium::WebDriver::Wait.new(timeout: @obj_timeout)
     wait.until {@test_driver.driver.find_elements(how, what).size > 0}
+  end
+
+  def find_all_elements(locator)
+    how, what = locator.first
+    @test_driver.driver.find_elements(how, what)
   end
 
   def hover_on_element(locator) # TODO: does not work, fix this

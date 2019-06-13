@@ -4,7 +4,8 @@ class GoSecureAssessmemtsPage < BasePage
   SUBMIT_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Submit')]"}
   NEXT_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Next')]"}
   CLICK_SCRIPT = "arguments[0].click();"
-  #  ALL_ANSWERS format for one answer: {question_number: [question_text, answer_text, click_save (boolean), click_next (boolean)]}
+  QUESTIONS_TITLE_XPATH = {:xpath => "//div[@class='question']/*[@class='title']"}
+  #  ALL_ANSWERS format for one answer: {question_number => [question_text, answer_text, click_save_after_answering (boolean), click_next_after_answering (boolean)]}
   ALL_ANSWERS = [{1 => ["What percentage of the team have undergone ThoughtWorks's AppSec101 classroom course, or, WebAppSec101 training on Curatr?", "100%", true, false]},
                  {2 => ["Has your team (or part of it) undergone any other trainings or certifications related to SECURITY?", "No", true, false]},
                  {3 => ["Check all the external materials that your team takes reference from during development", "OWASP Top 10 Security risks", true, true]},
@@ -49,13 +50,14 @@ class GoSecureAssessmemtsPage < BasePage
     execute_script(CLICK_SCRIPT, SUBMIT_BTN_XPATH)
   end
 
-  def answer_question(locator, question_number, click_save = false, click_next = false)
+  def answer_question(locator, question_number = 0, click_save = false, click_next = false)
     @log.debug("Answering the question " + question_number.to_s + " by clicking on the element " + locator.to_s)
     execute_script(CLICK_SCRIPT, locator)
     if click_save
       click_save_btn
     end
     if click_next
+      puts "Clicking NEXT"
       click_next_btn
     end
   end
@@ -83,4 +85,33 @@ class GoSecureAssessmemtsPage < BasePage
     click_submit_btn
   end
 
+  def answer_all_questions_independent_of_order
+    is_submit_btn_disabled = !is_element_enabled(SUBMIT_BTN_XPATH)
+    while is_submit_btn_disabled
+      all_visible_question_title_xpaths = find_all_elements(QUESTIONS_TITLE_XPATH)
+      last_question_title_text = all_visible_question_title_xpaths[-1].text
+      puts "Question: " + last_question_title_text
+      last_question_answer_attributes = []
+      ALL_ANSWERS.each do |question_answer|
+        question_number, answer_attributes = question_answer.first
+        question_text = answer_attributes[0]
+        if question_text == last_question_title_text
+          last_question_answer_attributes = answer_attributes
+          break
+        end
+      end
+      answer_text = last_question_answer_attributes[1]
+      puts "Answer: " + answer_text
+      save_after_answering = last_question_answer_attributes[2]
+      puts "save_after_answering: " + save_after_answering.to_s
+      next_after_answering = last_question_answer_attributes[3]
+      puts "next_after_answering: " + next_after_answering.to_s
+      answer_xpath = generate_answer_xpath(last_question_title_text, answer_text)
+      puts "Answer XPath: " + answer_xpath.to_s
+      answer_question(answer_xpath, 0, save_after_answering, next_after_answering)
+      is_submit_btn_disabled = !is_element_enabled(SUBMIT_BTN_XPATH)
+      puts "is_submit_btn_disabled: " + is_submit_btn_disabled.to_s
+    end
+    click_submit_btn
+  end
 end
