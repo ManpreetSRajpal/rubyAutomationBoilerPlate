@@ -1,7 +1,7 @@
 Feature: Go Secure
   The Go Secure login page allows the users to log in
 
-  @admin
+  @admin @smoke
   Scenario: User logs in to Go Secure
     Given I open the Go Secure login page
     When I log in to Go Secure as a "admin" user

@@ -2,6 +2,12 @@ Feature: Assessments
 
   Verifies that the Go Secure app allows the guest user to fill in the assessments and the head users (account/region/location head) to mark the assessments as reviewed
 
+  @smoke
+  Scenario: The guest user logs in to Go Secure and fills in the assessment
+    Given I open the Go Secure login page
+    When I log in to Go Secure as a "guest" user
+    Then I should see the Welcome text on the homepage
+
   @guest @account_head @region_head @location_head
   Scenario: The guest user logs in to Go Secure and fills in the assessment
     Given I open the Go Secure login page
