@@ -22,7 +22,7 @@ Feature: Assessments
     Then I should be able to see the reports page
     Then I should not be able to see the Marked As Reviewed Button
 
-  @account_head @region_head @location_head
+  @account_head
   Scenario: The account_head user logs in to the Go Secure and checks the filled assessment
     Given I open the Go Secure login page
     When I log in to Go Secure as a "account_head" user
@@ -37,6 +37,7 @@ Feature: Assessments
     Then I should be able to see the reports page
     Then I should be able to see the Marked As Reviewed Button
 
+  @region_head
   Scenario: The region_head user logs in to the Go Secure and checks the filled assessment
     Given I open the Go Secure login page
     When I log in to Go Secure as a "region_head" user
@@ -51,6 +52,7 @@ Feature: Assessments
     Then I should be able to see the reports page
     Then I should be able to see the Marked As Reviewed Button
 
+  @location_head
   Scenario: The location_head user logs in to the Go Secure and checks the filled assessment
     Given I open the Go Secure login page
     When I log in to Go Secure as a "location_head" user
