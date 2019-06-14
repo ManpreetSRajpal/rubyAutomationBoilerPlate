@@ -12,8 +12,8 @@ run_dir = FileUtils.mkdir_p("#{$target_folder}/Automation")
 rem_dir
 value = run_dir.to_s
 $VALUE = value[2..-3]
-$APPLICATION_NAME = 'BoilerPlate_application' #take from .env
-$PRODUCT_NAME = 'BoilerPlate_Product' #take from .env
+$APPLICATION_NAME = 'Go Secure E2E tests' #take from .env
+$PRODUCT_NAME = 'Go Secure E2E tests' #take from .env
 
 def setup_run_artifacts
   FileUtils.mkdir_p("./#{Dir.glob("#{$VALUE}/").max_by {|f| File.mtime(f)}}test_logs")
