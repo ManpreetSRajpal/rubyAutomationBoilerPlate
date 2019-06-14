@@ -4,10 +4,10 @@ class BasePage
 
   attr_accessor :obj_timeout
 
-  GO_SECURE_LOGO_XPATH = {:xpath => "//img[@class='logo']"}
-  PROFILE_ICON_XPATH = {:xpath => "//ul[@id='utility_nav']"}
-  LOGOUT_BTN_XPATH = {:xpath => "//a[contains(text(),'Logout')]"}
-  WELCOME_TEXT_XPATH = {:xpath => "//*[contains(text(),'Welcome')]"}
+  GO_SECURE_LOGO_XPATH ||= {:xpath => "//img[@class='logo']"}
+  PROFILE_ICON_XPATH ||= {:xpath => "//ul[@id='utility_nav']"}
+  LOGOUT_BTN_XPATH ||= {:xpath => "//a[contains(text(),'Logout')]"}
+  WELCOME_TEXT_XPATH ||= {:xpath => "//*[contains(text(),'Welcome')]"}
 
   def is_welcome_text_visible
     @log.debug('Checking if the welcome text is visible')

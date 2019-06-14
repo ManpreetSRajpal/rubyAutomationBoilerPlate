@@ -5,7 +5,7 @@ class HomePage < BasePage
   START_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Start')]"}
   PREVIOUS_BTN_XPATH = {:xpath => "//button[contains(text(),'Previous')]"}
   RESPONDED_TILE_XPATH = {:xpath => "//*[contains(text(),'Responded by:')]"}
-  @log = setup_logger('GoSecureHomePage.class')
+  @log = setup_logger('HomePage.class')
 
   def wait_for_tw_footer_to_be_visible
     @log.debug('Waiting for the TW footer text to be visible')

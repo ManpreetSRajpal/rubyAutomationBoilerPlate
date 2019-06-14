@@ -1,4 +1,4 @@
-class AssessmemtsPage < BasePage
+class AssessmentsPage < BasePage
 
   SAVE_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Save')]"}
   SUBMIT_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Submit')]"}
@@ -23,7 +23,7 @@ class AssessmemtsPage < BasePage
                  {15 => ["Are the logging facilities and log information protected against tampering and unauthorised access?", "Yes, and all logs are protected with an authorisation mechanism", true, false]},
                  {16 => ["Time taken to identify and analyse security faults captured by logs/monitoring systems in production is:", "1 day to 1 week of occurrence of security faults", true, false]}]
 
-  @log = setup_logger('GoSecureAssessmemtsPage.class')
+  @log = setup_logger('AssessmemtsPage.class')
 
   def is_save_btn_visible
     @log.debug("Checking if the SAVE button is visible")
