@@ -4,7 +4,7 @@ Given "I open the Go Secure login page" do
   @home_page = HomePage.new
   @logged_out_page = PostLogoutPage.new
   @users_page = UsersPage.new
-  @assessments_page = AssessmemtsPage.new
+  @assessments_page = AssessmentsPage.new
   @reports_page = ReportsPage.new
   @login_page.goto_login_page okta_login_url
 end
