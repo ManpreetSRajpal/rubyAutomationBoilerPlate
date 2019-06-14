@@ -3,6 +3,7 @@ require 'cucumber'
 require 'report_builder'
 require 'fileutils'
 require 'pg'
+require_relative '../../features/support/pages/BasePage'
 
 $target_folder = 'test_artifacts'
 
