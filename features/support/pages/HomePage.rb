@@ -1,4 +1,4 @@
-class GoSecureHomePage < BasePage
+class HomePage < BasePage
 
   USERS_MENU_BTN_XPATH = {:xpath => "//a[contains(text(),'Users')]"}
   TW_FOOTER_TEXT_XPATH = {:xpath => "//p[contains(text(),'© ThoughtWorks, Inc. All Rights Reserved.')]"}

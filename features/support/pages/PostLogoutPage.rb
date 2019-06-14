@@ -1,4 +1,4 @@
-class GoSecureLoggedOutPage < BasePage
+class PostLogoutPage < BasePage
 
   LOGOUT_MSG_XPATH = {:xpath => "//*[contains(text(),'You have been successfully logged out.')]"}
   @log = setup_logger('GoSecureLoggedOutPage.class')

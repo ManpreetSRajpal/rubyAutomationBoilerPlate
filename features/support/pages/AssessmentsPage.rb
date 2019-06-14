@@ -1,4 +1,4 @@
-class GoSecureAssessmemtsPage < BasePage
+class AssessmemtsPage < BasePage
 
   SAVE_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Save')]"}
   SUBMIT_BTN_XPATH = {:xpath => "//button[@type='button'][contains(text(),'Submit')]"}

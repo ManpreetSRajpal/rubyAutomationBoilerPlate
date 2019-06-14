@@ -1,4 +1,4 @@
-class GoSecureUsersPage < BasePage
+class UsersPage < BasePage
 
   NEW_ADMIN_USER_BTN_XPATH = {:xpath => "//a[contains(text(),'New Admin User')]"}
   @log = setup_logger('GoSecureUsersPage.class')

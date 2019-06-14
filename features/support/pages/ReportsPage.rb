@@ -1,4 +1,4 @@
-class GoSecureReportsPage < BasePage
+class ReportsPage < BasePage
 
   PRINT_BTN_XPATH = {:xpath => "//img[@class='report-print-icon']"}
   MARK_AS_REVIEWED_BTN_XPATH = {:xpath => "//button[contains(text(),'MARK AS REVIEWED')]"}

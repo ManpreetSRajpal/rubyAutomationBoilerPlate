@@ -1,11 +1,11 @@
 Given "I open the Go Secure login page" do
   @login_page = OktaLoginPage.new
   okta_login_url = @test_configuration.go_secure_login_url
-  @home_page = GoSecureHomePage.new
-  @logged_out_page = GoSecureLoggedOutPage.new
-  @users_page = GoSecureUsersPage.new
-  @assessments_page = GoSecureAssessmemtsPage.new
-  @reports_page = GoSecureReportsPage.new
+  @home_page = HomePage.new
+  @logged_out_page = PostLogoutPage.new
+  @users_page = UsersPage.new
+  @assessments_page = AssessmemtsPage.new
+  @reports_page = ReportsPage.new
   @login_page.goto_login_page okta_login_url
 end
 
