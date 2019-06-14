@@ -36,3 +36,31 @@ Feature: Assessments
     When I click on the submitted assessment
     Then I should be able to see the reports page
     Then I should be able to see the Marked As Reviewed Button
+
+  Scenario: The region_head user logs in to the Go Secure and checks the filled assessment
+    Given I open the Go Secure login page
+    When I log in to Go Secure as a "region_head" user
+    Then I should see the Welcome text on the homepage
+
+    Given I navigate to the home page
+    When I click on the Previous tab
+    Then I should be able to see the submitted assessments
+
+    Given I click on the Previous tab
+    When I click on the submitted assessment
+    Then I should be able to see the reports page
+    Then I should be able to see the Marked As Reviewed Button
+
+  Scenario: The location_head user logs in to the Go Secure and checks the filled assessment
+    Given I open the Go Secure login page
+    When I log in to Go Secure as a "location_head" user
+    Then I should see the Welcome text on the homepage
+
+    Given I navigate to the home page
+    When I click on the Previous tab
+    Then I should be able to see the submitted assessments
+
+    Given I click on the Previous tab
+    When I click on the submitted assessment
+    Then I should be able to see the reports page
+    Then I should be able to see the Marked As Reviewed Button
