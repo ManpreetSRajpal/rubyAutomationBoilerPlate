@@ -37,7 +37,7 @@ class TestDriver
   end
 
   def self.get_instance
-    if @test_driver == nil
+    if @test_driver == nil or @test_driver.driver == nil
       @test_driver = TestDriver.new
     end
     @test_driver
@@ -50,8 +50,8 @@ class TestDriver
 
   def quit
     @driver.quit
-    @driver = nil?
-    @test_driver = nil?
+    @driver = nil
+    @test_driver = nil
   end
 
   def take_screenshot(path)

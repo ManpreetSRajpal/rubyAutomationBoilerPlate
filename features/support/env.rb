@@ -81,6 +81,7 @@ After do |scenario|
     end
   ensure
     @log.debug("Something went wrong while capturing the screenshot.")
+    @test_driver.quit
   end
 end
 
@@ -94,5 +95,4 @@ at_exit do
       include_images: true
   }
   ReportBuilder.build_report options
-  @test_driver.quit
 end
